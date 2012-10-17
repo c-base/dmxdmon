@@ -1,0 +1,117 @@
+nav {
+	width: 100px; 
+	margin-top: 30px;
+	text-align: center;	
+}
+
+#main {
+	position: absolute;
+	width: 800px;
+	height: 570px;
+	background-repeat: no-repeat;
+	background-image: url(mainhall.png);
+	top: 30px;
+	left: 110px;
+	z-index: 1;
+}
+#buttons {
+	margin-top: 30px;
+	width: 100px;
+	text-align: center;		
+}
+#buttons input{
+	width: 20px;
+	height: 20px;
+	margin-top: 2px;
+	cursor: pointer;
+}
+
+footer, header, #infos {
+	height: 20px;
+	width: 100%;
+	left: 0px;
+	text-align: center;
+	background-color: silver;
+}
+#presets {
+	margin-top: 15px;
+	width: 150px; 
+	text-align: center;
+	position: absolute;
+	top: 30px;
+	left: 910px;
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+#presets div {
+    background-color: silver;
+    cursor: pointer;
+    font-size: 11px;
+    margin: 1px;
+	padding: 3px;
+}
+.namefield {
+    float: left;
+    width: 119px;
+}
+.delfield {
+	color: red;
+	float: right;
+	width:15px;
+}
+#infos {
+	color: red;
+	position:fixed;
+	bottom: 0px;
+	border-bottom: 1px solid black;
+}
+
+.spot {
+	height: 20px;
+	width: 20px;	
+	min-height: 20px;
+	min-width: 20px;
+	position: absolute;
+	z-index: 99;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	color: white;
+	text-align: center;
+	border: 1px solid black;
+	cursor: crosshair;
+}
+.statusbox {
+    border: 1px solid black;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    padding: 5px;
+    width: 110px;
+}
+#statusheader {
+    padding: 5px;	
+	margin-right: 5px;
+	margin-bottom: 5px;
+	border: 1px solid black;
+	width: 770px;
+}
+
+#colortable {
+	position: absolute;
+	z-index: 100;
+	top: 0px;
+	right: -20px;
+}
+#debug {
+	right: 20px;
+	top:30px;
+	position: absolute;
+	width: 300px;
+	height: 570px;
+	z-index: 1;
+	font-size: 11px;
+}
+header {
+	position: absolute;
+	top: 0px;
+}
