@@ -1,0 +1,27 @@
+#app {
+	height: 600px;
+}
+#main {
+	position: absolute;
+	width: 800px;
+	height: 570px;
+	background-repeat: no-repeat;
+	background-image: url(../mainhall.png);
+	top: 30px;
+	left: 110px;
+	z-index: 1;
+}
+.spot {
+	height: 20px;
+	width: 20px;	
+	min-height: 20px;
+	min-width: 20px;
+	position: absolute;
+	z-index: 99;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	color: white;
+	text-align: center;
+	border: 1px solid black;
+	cursor: crosshair;
+}
