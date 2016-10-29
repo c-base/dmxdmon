@@ -2,18 +2,58 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Title of the document</title>
+  <title>NEWDMX</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-  <div id="app">
-    <c-base-map v-bind:lights="lights"><c-base-map>
-  </div>
+  <div class="container">
+    <div id="app">
+      <c-base-map v-bind:lights="lights"></c-base-map>
+      <color-bar v-bind:selected_color="selected_color"></color-bar>
+    </div>
+  </div><!-- /.container -->
+  
+  <script type="text/x-template" id="dmx-light-template">
+    <div 
+        class="spot" 
+        v-bind:style="{
+            'left': light.left + 'px',
+            'top': light.top + 'px',
+            'background-color': 'rgb(' + light.r + ',' + light.g + ','  + light.b + ')'
+        }"
+        v-bind:title="light.name" v-on:click="clickMe"></div>
+  </script>
+  
+  <script type="text/x-template" id="color-bar-template">
+    <div class="row">
+      <div class="col-xs-1">
+        <input type="color" class="color-picker" v-on:change="colorChanged" v-bind:value="color_string" />
+        <!--<color-button v-bind:r="selected_color.r" v-bind:g="selected_color.g" v-bind:b="selected_color.b"></color-button>-->
+      </div><!-- /.col -->
+      <div class="col-xs-11">
+        <color-button v-bind:r="255" v-bind:g="255" v-bind:b="255"></color-button>
+        <color-button v-bind:r="0" v-bind:g="0" v-bind:b="0"></color-button>
+        <color-button v-bind:r="255" v-bind:g="0" v-bind:b="0"></color-button>
+        <color-button v-bind:r="255" v-bind:g="246" v-bind:b="76"></color-button>
+        <color-button v-bind:r="107" v-bind:g="242" v-bind:b="69"></color-button>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </script>
+  
+  <script type="text/x-template" id="color-button-template">
+    <div class="color-button" v-on:click="reverseMessage" v-bind:style="{'background-color': 'rgb(' + r + ',' + g + ',' + b +')'}">
+  </script>
 </body>
 
 </html>
 
-
+<script src="js/vendor/jquery.slim.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="js/vendor/vue.js"></script>
 <script src="js/app.js"></script>

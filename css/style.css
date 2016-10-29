@@ -1,16 +1,35 @@
-#app {
-	height: 600px;
+body {
+	margin: 0px;
 }
-#main {
-	position: absolute;
+
+#app {
+	position: relative;
+	height: 80px;
+}
+
+.color-bar {
+	padding-top: 80px;
+	min-height: 100px;
+	width:100%;
+	border-top: 1px solid #ccc;
+}
+
+.color-picker {
+	height: 50px;
+	width: 70px;
+}
+
+.c-base-map {
+	position: relative;
 	width: 800px;
-	height: 570px;
+	height: 600px;
 	background-repeat: no-repeat;
 	background-image: url(../mainhall.png);
 	top: 30px;
 	left: 110px;
 	z-index: 1;
 }
+
 .spot {
 	height: 20px;
 	width: 20px;	
@@ -24,4 +43,11 @@
 	text-align: center;
 	border: 1px solid black;
 	cursor: crosshair;
+}
+
+.color-button {
+	display: inline-block;
+	border: 1px solid grey;
+	height: 50px;
+	width: 70px;
 }
