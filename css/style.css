@@ -7,6 +7,7 @@ body {
 	height: 80px;
 }
 
+
 .color-bar {
 	padding-top: 80px;
 	min-height: 100px;
@@ -15,18 +16,16 @@ body {
 }
 
 .color-picker {
-	height: 50px;
-	width: 70px;
+	height: 100px;
+	width: 144px;
+	margin: 0px 2px 5px 2px;
 }
 
 .c-base-map {
 	position: relative;
-	width: 800px;
 	height: 600px;
 	background-repeat: no-repeat;
 	background-image: url(../mainhall.png);
-	top: 30px;
-	left: 110px;
 	z-index: 1;
 }
 
@@ -50,4 +49,34 @@ body {
 	border: 1px solid grey;
 	height: 50px;
 	width: 70px;
+	margin: 0px 2px 0px 2px;
+}
+
+.fader {
+	text-align: center;
+	height:200px;
+}
+
+.fader .caption {
+	text-align: center;
+	margin-bottom: 5px;
+	
+}
+
+.fader input {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+}
+
+/* vertical sliders */
+/* see: http://stackoverflow.com/questions/15935837/how-to-display-a-range-input-slider-vertically */
+input[type=range][orient=vertical]
+{
+	writing-mode: bt-lr; /* IE */
+	-webkit-appearance: slider-vertical; /* WebKit */
+	width: 8px;
+	height: 175px;
+	padding: 0 5px;
+	
 }

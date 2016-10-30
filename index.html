@@ -12,48 +12,63 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="app">
-      <c-base-map v-bind:lights="lights"></c-base-map>
-      <color-bar v-bind:selected_color="selected_color"></color-bar>
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-1">
+          <fader caption="Master" v-bind:value="master" v-on:faderchange="masterChanged"></fader>
+        </div><!-- ./col -->
+        <div class="col-xs-9">
+          <c-base-map v-bind:lights="lights" v-bind:master="master"></c-base-map>
+        </div><!-- ./col -->
+        <div class="col-xs-2">
+          <color-bar v-bind:color_palette="color_palette" v-bind:selected_color="selected_color"></color-bar>
+        </div><!-- ./col -->
+      </div><!-- ./row -->
+    </div><!-- /.container -->
+  </div><!-- /#app -->
+  
+  <script type="text/x-template" id="fader-template">
+    <div class="fader">
+        <span class="caption" role="caption">{{ caption }}<span>
+        <input type="range" orient="vertical" v-bind:value="value" min="0" max="255" v-on:change="onChange"/>
+        <button v-on:click="onOff">OFF</button>
     </div>
-  </div><!-- /.container -->
+  </script>
   
   <script type="text/x-template" id="dmx-light-template">
     <div 
-        class="spot" 
+        class="spot"
         v-bind:style="{
             'left': light.left + 'px',
             'top': light.top + 'px',
-            'background-color': 'rgb(' + light.r + ',' + light.g + ','  + light.b + ')'
+            'background-color': computed_color
         }"
-        v-bind:title="light.name" v-on:click="clickMe"></div>
+        v-bind:title="light.name" v-on:click="clickMe">
+    </div>
   </script>
   
   <script type="text/x-template" id="color-bar-template">
     <div class="row">
       <div class="col-xs-1">
-        <input type="color" class="color-picker" v-on:change="colorChanged" v-bind:value="color_string" />
-        <!--<color-button v-bind:r="selected_color.r" v-bind:g="selected_color.g" v-bind:b="selected_color.b"></color-button>-->
+        <input type="color" class="color-picker" v-on:change="colorChanged" v-bind:value="selected_color" />
       </div><!-- /.col -->
       <div class="col-xs-11">
-        <color-button v-bind:r="255" v-bind:g="255" v-bind:b="255"></color-button>
-        <color-button v-bind:r="0" v-bind:g="0" v-bind:b="0"></color-button>
-        <color-button v-bind:r="255" v-bind:g="0" v-bind:b="0"></color-button>
-        <color-button v-bind:r="255" v-bind:g="246" v-bind:b="76"></color-button>
-        <color-button v-bind:r="107" v-bind:g="242" v-bind:b="69"></color-button>
+        <color-button v-for="c in color_palette" v-bind:color="c"></color-button>
       </div><!-- /.col -->
     </div><!-- /.row -->
   </script>
   
   <script type="text/x-template" id="color-button-template">
-    <div class="color-button" v-on:click="reverseMessage" v-bind:style="{'background-color': 'rgb(' + r + ',' + g + ',' + b +')'}">
+    <div class="color-button" v-on:click="reverseMessage" v-bind:style="{'background-color': color}">
   </script>
+  
 </body>
-
 </html>
 
 <script src="js/vendor/jquery.slim.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/vendor/tinycolor.js" type="text/javascript"></script>
+<script src="js/vendor/tween.js@16.3.4" type="text/javascript"></script>
 <script src="js/vendor/vue.js"></script>
 <script src="js/app.js"></script>
